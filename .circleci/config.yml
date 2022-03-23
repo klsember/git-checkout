@@ -8,7 +8,7 @@ jobs:
     steps:
       - checkout
       - github-cli/clone:
-          repo: git@github.com:klsember/testing-cci.git
+          repo: klsember/testing-cci
       - run: ls
 
 workflows:
