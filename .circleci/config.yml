@@ -1,18 +1,15 @@
 version: 2.1
-
+orbs: 
+  github-cli: circleci/github-cli@2.1.0
 jobs:
   checkout-repos:
     docker: 
       - image: cimg/base:stable
     steps:
       - checkout
-      - run: 
-          name: Checkout another Repo
-          command: |
-            cd /home/circleci/
-            git clone git@github.com:klsember/cci-dynamicconfig-demo.git
-            cd cci-dynamicconfig-demo
-            ls
+      - github-cli/clone:
+          repo: https://github.com/klsember/testing-cci
+      - run: ls
 
 workflows:
   test-checkouts:
