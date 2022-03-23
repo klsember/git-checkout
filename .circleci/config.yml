@@ -7,7 +7,7 @@ jobs:
       - image: cimg/base:stable
     resource_class: small
     steps:
-      - github-cli/install
+      - github-cli/setup
       - github-cli/clone
       - run: ls
 
