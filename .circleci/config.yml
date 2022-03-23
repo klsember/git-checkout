@@ -5,10 +5,10 @@ jobs:
   checkout-repos:
     docker: 
       - image: cimg/base:stable
+    resource_class: small
     steps:
       - checkout
-      - github-cli/clone:
-          repo: klsember/testing-cci
+      - github-cli/clone
       - run: ls
 
 workflows:
