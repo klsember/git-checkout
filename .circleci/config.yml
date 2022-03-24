@@ -1,15 +1,26 @@
 version: 2.1
-orbs: 
-  github-cli: circleci/github-cli@2.1.0
+
+parameters:
+  repository:
+    type: string
+    default: 'cci-dynamicconfig-demo'
+  directory:
+    type: string
+    default: '$home/cci-dynamicconfig-demo'
+
 jobs:
   checkout-repos:
     docker: 
       - image: cimg/base:stable
     resource_class: small
     steps:
-      - github-cli/setup
-      - github-cli/clone
+      - checkout
       - run: ls
+      - run:
+          name: Second Checkout
+          command: |
+            git clone clone git@github.com:${CIRCLE_PROJECT_USERNAME}/<<pipeline.parameters.repository>>.git <<pipeline.parameters.directory>>
+     - run: ls
 
 workflows:
   test-checkouts:
