@@ -17,6 +17,7 @@ jobs:
           name: Second Checkout
           command: |
             git clone git@github.com:${CIRCLE_PROJECT_USERNAME}/<<pipeline.parameters.repository>>.git ${HOME}/<<pipeline.parameters.repository>>
+      - run: ls
       - run:
           command: |
             cd $HOME
