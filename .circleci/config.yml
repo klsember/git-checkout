@@ -6,7 +6,7 @@ parameters:
     default: 'cci-dynamicconfig-demo'
   directory:
     type: string
-    default: '$home/cci-dynamicconfig-demo'
+    default: '$home/'
 
 jobs:
   checkout-repos:
@@ -19,7 +19,7 @@ jobs:
       - run:
           name: Second Checkout
           command: |
-            git clone clone git@github.com:${CIRCLE_PROJECT_USERNAME}/<<pipeline.parameters.repository>>.git <<pipeline.parameters.directory>>
+            git clone git@github.com:${CIRCLE_PROJECT_USERNAME}/<<pipeline.parameters.repository>>.git <<pipeline.parameters.directory>>
       - run: ls
 
 workflows:
